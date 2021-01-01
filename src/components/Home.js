@@ -142,7 +142,7 @@ function logout(e,addToast)
   sessionStorage.removeItem("location")
   sessionStorage.removeItem("latitude")
   sessionStorage.removeItem("longitude")
-  sessionStorage.remmoveItem("id")
+  sessionStorage.removeItem("id")
   e.preventDefault();
   axios({
     headers : {
