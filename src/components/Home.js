@@ -138,6 +138,11 @@ return data;
 
 function logout(e,addToast)
 {
+  sessionStorage.removeItem("jwt");
+  sessionStorage.removeItem("location")
+  sessionStorage.removeItem("latitude")
+  sessionStorage.removeItem("longitude")
+  sessionStorage.remmoveItem("id")
   e.preventDefault();
   axios({
     headers : {
