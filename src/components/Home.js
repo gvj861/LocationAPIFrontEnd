@@ -26,7 +26,7 @@ const UserDetailsAndLocation = () => {
     if (data.latitude === undefined || data.latitude === null || data.latitude.length < 1)
     {
         const CoOrdinates = await getCoOrdinates(data.location);
-        if (CoOrdinates.lat && CoOrdinates.lng)
+        if (CoOrdinates.lat !== null || CoOrdinates.lng !== null)
         {
           data.latitude = CoOrdinates.lat;
           data.longitude = CoOrdinates.lng;
@@ -244,12 +244,20 @@ async function changeLocation(e,location,user,addToast)
     console.log("Got Location data",location)
     const data = await getCoOrdinates(location);
     console.log("Data",data)
-    user.location = location
+  document.getElementById("makenull").value = "";
+    if (data.lat != null && data.lng != null)
+    {
+    user.location = location 
     user.latitude = data.lat
     user.longitude = data.lng
-  document.getElementById("makenull").value = "";
     window.scrollTo(0,200);
     await updateUser(user,addToast);
+    }
+    else
+    {
+      addToast("Bad Location input..Give Accordingly" , {appearance : 'error'});
+    }
+
 }
 
 
